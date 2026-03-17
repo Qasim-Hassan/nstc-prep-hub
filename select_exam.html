@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJZRGZWDM6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YJZRGZWDM6');
+    </script>
+
+    <title>Select Exam | Olympiad Hub</title>
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --card-bg: #1a1a1a;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --accent-color: #bb86fc;
+            --hover-bg: #262626;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1rem;
+            display: inline-block;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover {
+            color: var(--text-main);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            color: white;
+        }
+
+        .general-info {
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            border-radius: 4px;
+            text-align: left;
+            box-sizing: border-box;
+        }
+
+        .general-info h3 { margin-top: 0; color: white; }
+        .general-info ul { color: var(--text-muted); padding-left: 20px; line-height: 1.6; }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            padding: 0 2rem 4rem;
+            width: 100%;
+            max-width: 900px;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background-color: var(--hover-bg);
+            border-color: var(--accent-color);
+        }
+
+        .card h2 { margin: 0 0 5px 0; font-size: 2rem; color: var(--accent-color); }
+        .card p { margin: 0; color: var(--text-muted); font-size: 1rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="back-link">&larr; Back to Home</a>
+        <h1>Which exam are you preparing for?</h1>
+    </header>
+
+    <div class="general-info">
+        <h3>General NSTC Pipeline Information</h3>
+        <ul>
+            <li><strong>Syllabus:</strong> F.Sc Part 1 books are highly recommended as the baseline for every subject test.</li>
+            <li><strong>Stage 1:</strong> Nationwide screening test.</li>
+            <li><strong>Stage 2:</strong> Top 50 to 80 participants selected for Training Camp 1.</li>
+            <li><strong>Stage 3:</strong> Top 25 participants advance to Training Camp 2.</li>
+            <li><strong>Stage 4:</strong> Final Olympiad team selected to represent Pakistan internationally.</li>
+        </ul>
+    </div>
+
+    <main class="container">
+        <a href="nmtc.html" class="card"><h2>NMTC</h2><p>Mathematics</p></a>
+        <a href="nptc.html" class="card"><h2>NPTC</h2><p>Physics</p></a>
+        <a href="nbtc.html" class="card"><h2>NBTC</h2><p>Biology</p></a>
+        <a href="nctc.html" class="card"><h2>NCTC</h2><p>Chemistry</p></a>
+    </main>
+
+</body>
+</html>
