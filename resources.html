@@ -41,13 +41,14 @@
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ldGRsaHhleWxzd29oaWpxeXBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2OTEwMDYsImV4cCI6MjA5MDI2NzAwNn0.O0wuALd8lm3YxbbthbDYPQF0vwXULimXdKhrEN7TSDU';
         // ----------------------------
 
-        // Corrected initialization
-        const { createClient } = window.supabase;
-        const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+        // Rename variable to 'supabaseClient' to avoid SyntaxError
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         async function loadResources() {
             const listDiv = document.getElementById('resource-list');
-            const { data, error } = await supabase.from('resources').select('*').order('created_at', { ascending: false });
+            
+            // Use 'supabaseClient' instead of 'supabase'
+            const { data, error } = await supabaseClient.from('resources').select('*').order('created_at', { ascending: false });
 
             if (error) {
                 listDiv.innerHTML = `<p style="color: #cf6679;">Error connecting to database: ${error.message}</p>`;
