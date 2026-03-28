@@ -45,9 +45,8 @@
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ldGRsaHhleWxzd29oaWpxeXBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2OTEwMDYsImV4cCI6MjA5MDI2NzAwNn0.O0wuALd8lm3YxbbthbDYPQF0vwXULimXdKhrEN7TSDU';
         // ----------------------------
 
-        // Corrected initialization
-        const { createClient } = window.supabase;
-        const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+        // Rename variable to 'supabaseClient' to avoid SyntaxError
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         document.getElementById('upload-form').addEventListener('submit', async (e) => {
             e.preventDefault(); 
@@ -59,7 +58,8 @@
             const subject = document.getElementById('subject').value;
             const link = document.getElementById('link').value;
 
-            const { data, error } = await supabase.from('resources').insert([{ title: title, subject: subject, drive_link: link }]);
+            // Use 'supabaseClient' instead of 'supabase'
+            const { data, error } = await supabaseClient.from('resources').insert([{ title: title, subject: subject, drive_link: link }]);
 
             if (error) {
                 alert("DATABASE ERROR: " + error.message);
