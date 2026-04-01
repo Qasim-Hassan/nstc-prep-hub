@@ -14,6 +14,11 @@
 
     <title>Select Exam | Olympiad Hub</title>
     <style>
+        /* Universal Box Sizing Fix */
+        * {
+            box-sizing: border-box;
+        }
+
         :root {
             --bg-color: #0d0d0d;
             --card-bg: #161616;
@@ -41,26 +46,25 @@
             align-items: center;
         }
 
-        /* --- YOUR EXISTING STYLES --- */
         header { text-align: center; padding: 4rem 2rem 2rem; width: 100%; max-width: 800px; }
         .back-link { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; transition: color 0.3s; }
         .back-link:hover { color: var(--text-main); }
         h1 { font-size: 2.2rem; margin: 0 0 10px 0; font-weight: 700; letter-spacing: -0.5px; }
 
-        .general-info { background-color: var(--card-bg); border: 1px solid var(--card-border); border-left: 4px solid var(--accent-color); padding: 1.5rem 2rem; width: 90%; max-width: 850px; margin: 0 auto 3rem; border-radius: 12px; box-sizing: border-box; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); }
+        .general-info { background-color: var(--card-bg); border: 1px solid var(--card-border); border-left: 4px solid var(--accent-color); padding: 1.5rem 2rem; width: 90%; max-width: 850px; margin: 0 auto 3rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); }
         .general-info h3 { margin-top: 0; margin-bottom: 1rem; color: white; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
         .general-info ul { color: var(--text-muted); padding-left: 20px; line-height: 1.7; margin: 0; }
 
         .section-header { width: 90%; max-width: 850px; margin: 0 auto 1rem; font-size: 1.1rem; font-weight: 600; color: var(--text-main); }
 
-        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; padding: 0 2rem 2rem; width: 100%; max-width: 850px; box-sizing: border-box; }
+        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; padding: 0 2rem 2rem; width: 100%; max-width: 850px; }
         .card { background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 2rem 1.5rem; text-align: center; text-decoration: none; color: var(--text-main); transition: all 0.2s ease-in-out; display: flex; flex-direction: column; align-items: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
         .card:hover { transform: translateY(-4px); background-color: #1e1e1e; border-color: #444; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
         .icon-box { width: 64px; height: 64px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.25rem; }
         .card h2 { margin: 0 0 4px 0; font-size: 1.4rem; color: var(--text-main); font-weight: 600; }
         .card p { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
 
-        .contribute-card { background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 2.5rem; margin: 2rem auto 4rem auto; width: 90%; max-width: 850px; text-align: left; box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start; position: relative; overflow: hidden; }
+        .contribute-card { background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 2.5rem; margin: 2rem auto 4rem auto; width: 90%; max-width: 850px; text-align: left; display: flex; flex-direction: column; align-items: flex-start; position: relative; overflow: hidden; }
         .contribute-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--secondary-accent), var(--accent-color)); }
         .contribute-card h2 { font-size: 1.6rem; margin: 0 0 10px 0; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; }
         .contribute-card p { color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem; max-width: 600px; }
@@ -70,36 +74,9 @@
         /* --- CHATBOT WIDGET CSS --- */
         #chatbot-container { position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
         
-        /* The Popup Tooltip */
-        #help-tooltip {
-            position: absolute;
-            bottom: 75px;
-            right: 0;
-            background-color: var(--secondary-accent);
-            color: #000;
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            box-shadow: 0 4px 10px rgba(3, 218, 198, 0.3);
-            animation: floatUpDown 2s infinite ease-in-out;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-        #help-tooltip::after { /* The little triangle pointing down */
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            right: 20px;
-            border-width: 6px 6px 0;
-            border-style: solid;
-            border-color: var(--secondary-accent) transparent transparent transparent;
-        }
-        @keyframes floatUpDown {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
+        #help-tooltip { position: absolute; bottom: 75px; right: 0; background-color: var(--secondary-accent); color: #000; padding: 8px 14px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; white-space: nowrap; box-shadow: 0 4px 10px rgba(3, 218, 198, 0.3); animation: floatUpDown 2s infinite ease-in-out; pointer-events: none; transition: opacity 0.3s ease; }
+        #help-tooltip::after { content: ''; position: absolute; bottom: -6px; right: 20px; border-width: 6px 6px 0; border-style: solid; border-color: var(--secondary-accent) transparent transparent transparent; }
+        @keyframes floatUpDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
         #chat-window { display: none; width: 380px; height: 550px; background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); flex-direction: column; overflow: hidden; margin-bottom: 15px; }
         #chat-header { background-color: #222; padding: 15px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
@@ -126,12 +103,25 @@
         #chat-toggle-btn { background-color: var(--accent-color); color: black; border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 15px rgba(187, 134, 252, 0.4); float: right; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;}
         #chat-toggle-btn:hover { transform: scale(1.05); }
 
-        /* Thinking animation */
         .typing-indicator { display: inline-flex; gap: 4px; }
         .typing-indicator span { width: 6px; height: 6px; background-color: #888; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out both; }
         .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
         .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
         @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+
+        /* --- MOBILE RESPONSIVENESS FIXES --- */
+        @media (max-width: 480px) {
+            header { padding: 3rem 1rem 1rem; }
+            .container { padding: 0 1rem 2rem; }
+            #chatbot-container { bottom: 15px; right: 15px; }
+            #chat-window {
+                width: 90vw; 
+                height: 70vh; 
+                max-width: none;
+                margin-bottom: 10px;
+            }
+            #help-tooltip { right: 5px; }
+        }
     </style>
 </head>
 <body>
@@ -202,8 +192,7 @@
     </div>
 
     <script>
-        // 1. SILENT WAKE-UP PING
-        // This knocks on the server's door the second the website loads so it's awake when the user needs it.
+        // Silent wake-up ping for the backend server
         fetch('https://MRMD007.pythonanywhere.com/', { mode: 'no-cors' }).catch(() => console.log("Oracle waking up..."));
 
         const chatWindow = document.getElementById('chat-window');
@@ -216,8 +205,7 @@
 
         toggleBtn.addEventListener('click', () => {
             chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
-            // Hide the tooltip permanently once they click the chat
-            helpTooltip.style.opacity = '0';
+            helpTooltip.style.opacity = '0'; // Hide tooltip on open
         });
         
         closeBtn.addEventListener('click', () => chatWindow.style.display = 'none');
